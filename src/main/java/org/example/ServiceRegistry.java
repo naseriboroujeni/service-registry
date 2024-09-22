@@ -20,7 +20,9 @@ public class ServiceRegistry {
         return Optional.ofNullable(services.get(serviceName));
     }
 
-    public boolean removeService(String serviceName) throws Exception {
-        return services.remove(serviceName) != null;
+    public void removeService(String serviceName) throws ServiceNotFoundException {
+        if (services.remove(serviceName) == null) {
+            throw new ServiceNotFoundException(serviceName);
+        }
     }
 }
