@@ -8,7 +8,7 @@ public class ServiceRegistry {
 
     private Map<String, Service> services = new ConcurrentHashMap<>();
 
-    public void registerService(String serviceName) throws ServiceAlreadyExistsException {
+    public void registerService(String serviceName) {
 
         Service service = new Service(serviceName, Service.SERVICE_STATUS.ACTIVE);
         if (services.putIfAbsent(serviceName, service) != null) {
@@ -20,7 +20,7 @@ public class ServiceRegistry {
         return Optional.ofNullable(services.get(serviceName));
     }
 
-    public void removeService(String serviceName) throws ServiceNotFoundException {
+    public void removeService(String serviceName) {
         if (services.remove(serviceName) == null) {
             throw new ServiceNotFoundException(serviceName);
         }
