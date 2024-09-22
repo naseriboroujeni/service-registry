@@ -25,4 +25,8 @@ public class ServiceRegistry {
             throw new ServiceNotFoundException(serviceName);
         }
     }
+
+    public int getServiceCount() {
+        return services.size();
+    }
 }
