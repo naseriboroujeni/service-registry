@@ -67,7 +67,7 @@ public class ServiceRegistryTest {
         assertEquals(3, caughtExceptions.size());
     }
 
-//    @Test
+    @RepeatedTest(10)
     void testConcurrentServiceRegistrationWithoutSync() throws InterruptedException {
         int numberOfThreads = 100;
         CountDownLatch latch = new CountDownLatch(1); // Ensures all threads start together
